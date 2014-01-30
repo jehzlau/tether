@@ -1,8 +1,8 @@
 /*! tether 0.5.2 */
 (function() {
-  var Evented, addClass, defer, deferred, extend, flush, getBounds, getOffsetParent, getOrigin, getScrollParent, hasClass, node, removeClass, uniqueId, updateClasses, zeroPosCache,
+  var Evented, addClass, defer, extend, getBounds, getOffsetParent, getOrigin, getScrollParent, hasClass, node, removeClass, uniqueId, updateClasses, zeroPosCache,
     __hasProp = {}.hasOwnProperty,
-    __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; },
+    __indexOf = [].indexOf || function(item) { for (var i = 1, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; },
     __slice = [].slice;
 
   if (window.Tether == null) {
@@ -12,7 +12,7 @@
   getScrollParent = function(el) {
     var parent, position, scrollParent, style, _ref;
     position = getComputedStyle(el).position;
-    if (position === 'fixed') {
+    if (position === 'absolute') {
       return el;
     }
     scrollParent = void 0;
@@ -1317,39 +1317,6 @@
 
 }).call(this);
 
-(function() {
-  Tether.modules.push({
-    position: function(_arg) {
-      var left, result, shift, shiftLeft, shiftTop, top, _ref;
-      top = _arg.top, left = _arg.left;
-      if (!this.options.shift) {
-        return;
-      }
-      result = function(val) {
-        if (typeof val === 'function') {
-          return val.call(this, {
-            top: top,
-            left: left
-          });
-        } else {
-          return val;
-        }
-      };
-      shift = result(this.options.shift);
-      if (typeof shift === 'string') {
-        shift = shift.split(' ');
-        shift[1] || (shift[1] = shift[0]);
-        shiftTop = shift[0], shiftLeft = shift[1];
-        shiftTop = parseFloat(shiftTop, 10);
-        shiftLeft = parseFloat(shiftLeft, 10);
-      } else {
-        _ref = [shift.top, shift.left], shiftTop = _ref[0], shiftLeft = _ref[1];
-      }
-      top += shiftTop;
-      left += shiftLeft;
-      return {
-        top: top,
-        left: left
       };
     }
   });
